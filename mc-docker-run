@@ -3,7 +3,7 @@
 SERVER_NAME=${SERVER_NAME-"minecraft-server"}
 SERVER_PORT=${SERVER_PORT-"25565"}
 BACKUP_INTERVAL=${BACKUP_INTERVAL-"360"} # Every 6 h
-AUTH_SERVER_URL=${MINECRAFT_AUTH_SERVER_URL-"http://auth.minecraft.style"}
+AUTH_SERVER_URL=${MINECRAFT_AUTH_SERVER_URL-"https://auth.craftorio.com"}
 
 function info {
     printf "\033[0;36m${1}\033[0m \n"
@@ -112,7 +112,7 @@ function usage {
 }
 
 mkdir -p ${DATA_DIR}
-cd ${DATA_DIR} && DATA_DIR=$(pwd) && cd - 
+cd ${DATA_DIR} && DATA_DIR=$(pwd) && cd -
 
 mkdir -p ${DATA_DIR}/mcbackup || exit 1
 mkdir -p ${DATA_DIR}/worlds || exit 1
@@ -160,12 +160,12 @@ fi
       -e MYSQL_DATABASE=minecraft \
       percona:5.5)
   fi
-  
+
   note "Waiting database..."
   until docker exec ${MYSQL_ID} timeout 1 bash -c "cat < /dev/null > /dev/tcp/localhost/3306" > /dev/null; do
       sleep 3
   done
-  
+
   WITH_MYSQL_LINK_ARG="--link=${SERVER_NAME}_mysql:db"
 }
 
@@ -189,10 +189,10 @@ SSH_PASS=${SSH_PASS-minecraft}
 docker run -d --restart=always \
 --name=${SERVER_NAME} ${WITH_MYSQL_LINK_ARG} \
 -e MINECRAFT_AUTH_SERVER_URL=${AUTH_SERVER_URL} \
--e MC_BACKUPSCRIPTCOMPATIBLE=${MC_BACKUPSCRIPTCOMPATIBLE} \
--e MC_CPU_COUNT=${MC_CPU_COUNT} \
--e MC_INIT_MEMORY=${MC_INIT_MEMORY} \
--e MC_MAX_MEMORY=${MC_MAX_MEMORY} \
+-e MC_BACKUPSCRIPTCOMPATIBLE=${MC_BACKUPSCRIPTCOMPATIBLE-true} \
+-e MC_CPU_COUNT=${MC_CPU_COUNT-1} \
+-e MC_INIT_MEMORY=${MC_INIT_MEMORY-1024} \
+-e MC_MAX_MEMORY=${MC_MAX_MEMORY-2048} \
 -e BACKUP_INTERVAL=${BACKUP_INTERVAL} \
 -e S3_ACCESS_KEY=${S3_ACCESS_KEY} \
 -e S3_SECRET_KEY=${S3_SECRET_KEY} \
