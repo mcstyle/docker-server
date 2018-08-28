@@ -12,13 +12,17 @@
 
 #### Build docker image
 
+**1.12.2**  
+
+    $ docker build --build-arg MC_RELEASE_TAG=1.12.2 --build-arg MC_SERVER_TAG=1.12.2-2705 -t craftorio/docker-server-minecraft:1.12.2-2705 .
+
 **1.10.2**  
 
-    $ docker build --build-arg MC_RELEASE_TAG=1.10.2 --build-arg MC_SERVER_TAG=1.10.2 -t minecraft-server:1.10.2 .
+    $ docker build --build-arg MC_RELEASE_TAG=1.10.2 --build-arg MC_SERVER_TAG=1.10.2-2281 -t craftorio/docker-server-minecraft:1.10.2 .
     
 **1.7.10**
 
-    $ docker build --build-arg MC_RELEASE_TAG=1.7.10 --build-arg MC_SERVER_TAG=1.7.10-1614-thermos -t minecraft-server:1.7.10-1614-thermos .
+    $ docker build --build-arg MC_RELEASE_TAG=1.7.10 --build-arg MC_SERVER_TAG=1.7.10-1614-thermos -t craftorio/docker-server-minecraft:1.7.10-1614-thermos .
 
 ####  Install cli helper:
 
