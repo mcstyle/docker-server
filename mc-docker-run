@@ -49,7 +49,7 @@ case ${key} in
     DYNMAP_PORT="$2"
     shift
     ;;
-    --prometheus-exporter)
+    --prometheus-exporter-port)
     PROMETHEUS_EXPORTER_PORT="$2"
     shift
     ;;
