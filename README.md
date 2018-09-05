@@ -26,7 +26,8 @@
 
 ####  Install cli helper:
 
-    $ sudo cp ./mc-docker-run /usr/local/bin/mc-docker-run
+    $ sudo wget -O /usr/local/bin/mc-docker-run https://raw.githubusercontent.com/craftorio/docker-server-minecraft/1.12.2-2705/mc-docker-run
+    $ sudo chmod +x /usr/local/bin/mc-docker-run
 
 ####  Run the server:
 
