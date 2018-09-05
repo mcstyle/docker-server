@@ -49,6 +49,10 @@ case ${key} in
     DYNMAP_PORT="$2"
     shift
     ;;
+    --prometheus-exporter)
+    PROMETHEUS_EXPORTER_PORT="$2"
+    shift
+    ;;
     -c|--cpu-count)
     MC_CPU_COUNT="$2"
     shift
@@ -186,6 +190,11 @@ fi
 SSH_PORT_ARG=""
 if [[ ! -z "${SSH_PORT}" ]]; then
   SSH_PORT_ARG="-p ${SSH_PORT}:22"
+fi
+
+PROMETHEUS_EXPORTER_ARG=""
+if [[ ! -z "${PROMETHEUS_EXPORTER_PORT}" ]]; then
+  PROMETHEUS_EXPORTER_ARG="-p ${PROMETHEUS_EXPORTER_PORT}:${PROMETHEUS_EXPORTER_PORT}"
 fi
 
 SSH_PASS=${SSH_PASS-minecraft}
