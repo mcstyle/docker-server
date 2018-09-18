@@ -1,6 +1,6 @@
 FROM mcstyle/ubuntu
 ARG MC_RELEASE_TAG=1.12.2
-ARG MC_SERVER_TAG=1.12.2-2705
+ARG MC_SERVER_TAG=1.12.2-2759
 ARG S3CMD_RELEASE_TAG=1.6.1
 
 RUN adduser --disabled-password --gecos '' minecraft
