@@ -45,9 +45,9 @@ Run docker containers
     
   or
     
-    $ export MINECRAFT_AUTH_SERVER_URL="http://auth.myfunnyserver.com"
-    $ export CONTAINER_IMAGE="minecraft-server:1.10.2"
-    $ mc-docker-run -d ~/minecraft-server/myfunnyserver -n myfunnyserver -p 25565
+    $ export MINECRAFT_AUTH_SERVER_URL="https://auth.craftorio.com"
+    $ export CONTAINER_IMAGE="craftorio/docker-server-minecraft:1.12.2-2838"
+    $ mc-docker-run -d /opt/minecraft/myfunnyserver -n myfunnyserver -p 25565
     
 Define init and max memory, and cpu count at run
 
