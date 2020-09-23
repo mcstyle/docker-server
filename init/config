@@ -130,7 +130,7 @@ OVBACKUP="/home/${USERNAME}/mc-overviewer/overviewerbackups"
 # Things to leave alone ;)
 # =====================
 
-INVOCATION="java -Xmx$MAXMEM -Xms$INITMEM -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalPacing -XX:ParallelGCThreads=$CPU_COUNT -XX:+AggressiveOpts -jar $SERVICE nogui"
+INVOCATION="java -Xmx$MAXMEM -Xms$INITMEM -XX:G1HeapRegionSize=32M -XX:MaxGCPauseMillis=50 -XX:G1NewSizePercent=20 -XX:+UnlockExperimentalVMOptions -Dsun.rmi.dgc.server.gcInterval=2147483646 -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalPacing -XX:ParallelGCThreads=$CPU_COUNT -XX:+AggressiveOpts -jar $SERVICE nogui"
 
 # Path to the the mounted ramdisk (the default will work in most senarios).
 RAMDISK="/dev/shm"
